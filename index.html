@@ -10,133 +10,190 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="responsive.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Pacifico&family=Quicksand:wght@300..700&family=Titan+One&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="app-container">
     <canvas id="captureCanvas" style="display: none;"></canvas>
-    <h1 class="title">Julie & Jade's 4th Anniversary</h1>
-    <h1 class="title">Photo Booth</h1>
-    <p class="subtitle">We can still go to the actual photobooth later haha</p>
+    
+    <div class="header-section">
+      <h1 class="title">Julie & Jade's 4th Anniversary</h1>
+      <h1 class="title">Photo Booth</h1>
+      <p class="subtitle">We can still go to the actual photobooth later haha</p>
+    </div>
 
     <!-- Camera View State -->
     <div id="cameraView" class="camera-view-wrapper">
-      <div class="card-with-cats">
-        <div class="cats-on-card">
-          <img src="teddy.png" alt="Teddy the cat" class="cat-image cat-left">
-          <img src="ckeo.png" alt="Ckeo the cat" class="cat-image cat-right">
-        </div>
-        <div class="main-card">
-          <div class="content-wrapper">
-            <div class="camera-section">
-              <div id="cameraContainer" class="camera-container border-lavender">
-                <video id="videoElement" autoplay playsinline muted></video>
-                <div id="cameraError" class="camera-error" style="display: none;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="camera-error-icon">
-                    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
-                    <circle cx="12" cy="13" r="3"/>
-                  </svg>
-                  <p>Unable to access camera. Please allow camera permissions.</p>
+      <div class="main-layout">
+        <!-- Left Side: Main Card -->
+        <div class="left-section">
+          <div class="card-with-cats">
+            <div class="cats-on-card">
+              <img src="teddy.png" alt="Teddy the cat" class="cat-image cat-left">
+              <img src="ckeo.png" alt="Ckeo the cat" class="cat-image cat-right">
+            </div>
+            <div class="main-card">
+              <div class="content-wrapper">
+                <div class="camera-section">
+                  <div id="cameraContainer" class="camera-container border-lavender">
+                    <video id="videoElement" autoplay playsinline muted></video>
+                    <div id="cameraError" class="camera-error" style="display: none;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="camera-error-icon">
+                        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+                        <circle cx="12" cy="13" r="3"/>
+                      </svg>
+                      <p>Unable to access camera. Please allow camera permissions.</p>
+                    </div>
+                    <div id="countdownOverlay" class="countdown-overlay" style="display: none;">
+                      <p id="photoCount" class="photo-count">Photo 1 of 4</p>
+                      <span id="countdownNumber" class="countdown-number">3</span>
+                    </div>
+                    <div id="flashOverlay" class="flash-overlay" style="display: none;"></div>
+                  </div>
+                  <div class="capture-button-container">
+                    <button id="takePhotosBtn" class="take-photos-btn">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+                        <circle cx="12" cy="13" r="3"/>
+                      </svg>
+                      Take Photos
+                    </button>
+                  </div>
                 </div>
-                <div id="countdownOverlay" class="countdown-overlay" style="display: none;">
-                  <p id="photoCount" class="photo-count">Photo 1 of 4</p>
-                  <span id="countdownNumber" class="countdown-number">3</span>
+
+                <div class="controls-section">
+                  <div class="control-card">
+                    <div class="control-header">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="control-icon">
+                        <circle cx="13.5" cy="6.5" r=".5"/>
+                        <circle cx="17.5" cy="10.5" r=".5"/>
+                        <circle cx="8.5" cy="7.5" r=".5"/>
+                        <circle cx="6.5" cy="12.5" r=".5"/>
+                        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.555C21.965 6.012 17.461 2 12 2z"/>
+                      </svg>
+                      <h3 class="control-title">Strip Color</h3>
+                    </div>
+                    <div class="color-options">
+                      <label class="color-option selected" data-color="lavender">
+                        <input type="radio" name="stripColor" value="lavender" checked>
+                        <div class="color-swatch lavender"></div>
+                        <span>Lavender</span>
+                      </label>
+                      <label class="color-option" data-color="pink">
+                        <input type="radio" name="stripColor" value="pink">
+                        <div class="color-swatch pink"></div>
+                        <span>Pink</span>
+                      </label>
+                      <label class="color-option" data-color="white">
+                        <input type="radio" name="stripColor" value="white">
+                        <div class="color-swatch white"></div>
+                        <span>White</span>
+                      </label>
+                      <label class="color-option" data-color="black">
+                        <input type="radio" name="stripColor" value="black">
+                        <div class="color-swatch black"></div>
+                        <span>Black</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="control-card">
+                    <div class="control-header">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="control-icon">
+                        <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+                        <path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/>
+                      </svg>
+                      <h3 class="control-title">Filter</h3>
+                    </div>
+                    <div class="filter-options">
+                      <button class="filter-btn selected" data-filter="normal">Normal</button>
+                      <button class="filter-btn" data-filter="vintage">Vintage</button>
+                      <button class="filter-btn" data-filter="bw">B&W</button>
+                      <button class="filter-btn" data-filter="sepia">Sepia</button>
+                    </div>
+                  </div>
+
+                  <div class="control-card">
+                    <label class="toggle-option" id="charactersToggle">
+                      <div class="toggle-label">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="control-icon">
+                          <circle cx="12" cy="12" r="10"/>
+                          <circle cx="12" cy="10" r="3"/>
+                          <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
+                        </svg>
+                        <span>Include Characters</span>
+                      </div>
+                      <div class="toggle-switch">
+                        <input type="checkbox" id="includeCharacters" checked>
+                        <span class="toggle-slider"></span>
+                      </div>
+                    </label>
+                  </div>
+                  <div class="control-card">
+                    <label class="toggle-option" id="phoneModeToggle">
+                      <div class="toggle-label">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="control-icon">
+                          <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/>
+                          <path d="M12 18h.01"/>
+                        </svg>
+                        <span>Phone Mode</span>
+                      </div>
+                      <div class="toggle-switch">
+                        <input type="checkbox" id="phoneMode">
+                        <span class="toggle-slider"></span>
+                      </div>
+                    </label>
+                  </div>
                 </div>
-                <div id="flashOverlay" class="flash-overlay" style="display: none;"></div>
-              </div>
-              <div class="capture-button-container">
-                <button id="takePhotosBtn" class="take-photos-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
-                    <circle cx="12" cy="13" r="3"/>
-                  </svg>
-                  Take Photos
-                </button>
               </div>
             </div>
+          </div>
+        </div>
 
-            <div class="controls-section">
-              <div class="control-card">
-                <div class="control-header">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="control-icon">
-                    <circle cx="13.5" cy="6.5" r=".5"/>
-                    <circle cx="17.5" cy="10.5" r=".5"/>
-                    <circle cx="8.5" cy="7.5" r=".5"/>
-                    <circle cx="6.5" cy="12.5" r=".5"/>
-                    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.555C21.965 6.012 17.461 2 12 2z"/>
-                  </svg>
-                  <h3 class="control-title">Strip Color</h3>
-                </div>
-                <div class="color-options">
-                  <label class="color-option selected" data-color="lavender">
-                    <input type="radio" name="stripColor" value="lavender" checked>
-                    <div class="color-swatch lavender"></div>
-                    <span>Lavender</span>
-                  </label>
-                  <label class="color-option" data-color="pink">
-                    <input type="radio" name="stripColor" value="pink">
-                    <div class="color-swatch pink"></div>
-                    <span>Pink</span>
-                  </label>
-                  <label class="color-option" data-color="white">
-                    <input type="radio" name="stripColor" value="white">
-                    <div class="color-swatch white"></div>
-                    <span>White</span>
-                  </label>
-                  <label class="color-option" data-color="black">
-                    <input type="radio" name="stripColor" value="black">
-                    <div class="color-swatch black"></div>
-                    <span>Black</span>
-                  </label>
+        <!-- Right Side: Big Polaroids -->
+        <div class="right-section">
+          <div class="polaroids-display">
+            <div class="polaroid polaroid-1">
+              <div class="polaroid-tape"></div>
+              <div class="polaroid-photo">
+                <img src="photo1.jpeg" alt="Photo 1" class="polaroid-img" id="polaroid1">
+                <div class="polaroid-placeholder">
+                  <span>1</span>
                 </div>
               </div>
-
-              <div class="control-card">
-                <div class="control-header">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="control-icon">
-                    <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
-                    <path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/>
-                  </svg>
-                  <h3 class="control-title">Filter</h3>
-                </div>
-                <div class="filter-options">
-                  <button class="filter-btn selected" data-filter="normal">Normal</button>
-                  <button class="filter-btn" data-filter="vintage">Vintage</button>
-                  <button class="filter-btn" data-filter="bw">B&W</button>
-                  <button class="filter-btn" data-filter="sepia">Sepia</button>
+              <div class="polaroid-caption">Dogggyyy Cafe!</div>
+            </div>
+            <div class="polaroid polaroid-2">
+              <div class="polaroid-tape"></div>
+              <div class="polaroid-photo">
+                <img src="photo2.JPG" alt="Photo 2" class="polaroid-img" id="polaroid2">
+                <div class="polaroid-placeholder">
+                  <span>2</span>
                 </div>
               </div>
-
-              <div class="control-card">
-                <label class="toggle-option" id="charactersToggle">
-                  <div class="toggle-label">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="control-icon">
-                      <circle cx="12" cy="12" r="10"/>
-                      <circle cx="12" cy="10" r="3"/>
-                      <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
-                    </svg>
-                    <span>Include Characters</span>
-                  </div>
-                  <div class="toggle-switch">
-                    <input type="checkbox" id="includeCharacters" checked>
-                    <span class="toggle-slider"></span>
-                  </div>
-                </label>
+              <div class="polaroid-caption">Water Lantern Festival!</div>
+            </div>
+            <div class="polaroid polaroid-3">
+              <div class="polaroid-tape"></div>
+              <div class="polaroid-photo">
+                <img src="photo3.jpeg" alt="Photo 3" class="polaroid-img" id="polaroid3">
+                <div class="polaroid-placeholder">
+                  <span>3</span>
+                </div>
               </div>
-              <div class="control-card">
-                <label class="toggle-option" id="phoneModeToggle">
-                  <div class="toggle-label">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="control-icon">
-                      <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/>
-                      <path d="M12 18h.01"/>
-                    </svg>
-                    <span>Phone Mode</span>
-                  </div>
-                  <div class="toggle-switch">
-                    <input type="checkbox" id="phoneMode">
-                    <span class="toggle-slider"></span>
-                  </div>
-                </label>
+              <div class="polaroid-caption">Farm Date!</div>
+            </div>
+            <div class="polaroid polaroid-4">
+              <div class="polaroid-tape"></div>
+              <div class="polaroid-photo">
+                <img src="photo4.jpeg" alt="Photo 4" class="polaroid-img" id="polaroid4">
+                <div class="polaroid-placeholder">
+                  <span>4</span>
+                </div>
               </div>
+              <div class="polaroid-caption">Prom!</div>
             </div>
           </div>
         </div>

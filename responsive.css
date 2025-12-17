@@ -1,605 +1,615 @@
 /* ==================== RESPONSIVE STYLES ==================== */
 /* Separate file for all responsive/media query styles */
 
-/* Base responsive adjustments for camera */
-.camera-section {
+/* Medium screens - stack layout but keep polaroids visible */
+@media (max-width: 1024px) {
+  .main-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .left-section {
     width: 100%;
+    max-width: 600px;
+  }
+  
+  .right-section {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .polaroids-display {
+    max-width: 450px;
+    gap: 1rem;
+  }
+  
+  .polaroid {
+    padding: 8px 8px 30px 8px;
+  }
+  
+  .polaroid-caption {
+    font-size: 0.75rem;
+  }
+  
+  .polaroid-placeholder span {
+    font-size: 2rem;
+  }
+}
+
+/* Tablets (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .app-container {
+    padding: 1rem;
+  }
+  
+  .content-wrapper {
+    flex-direction: row;
+  }
+  
+  .controls-section {
+    width: 170px;
+  }
+}
+
+/* Small tablets (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .app-container {
+    padding: 0.75rem;
+  }
+  
+  .content-wrapper {
+    flex-direction: column;
+  }
+  
+  .controls-section {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .control-card {
+    flex: 1;
+    min-width: 130px;
+  }
+}
+
+/* Extra small devices (phones, less than 480px) */
+@media (max-width: 480px) {
+  .app-container {
+    padding: 0.5rem;
+    padding-bottom: 100px;
+  }
+  
+  .header-section {
+    margin-bottom: 0.5rem;
+  }
+  
+  .title {
+    font-size: 1rem;
+  }
+  
+  .subtitle {
+    font-size: 0.75rem;
+  }
+  
+  .card-with-cats {
+    padding-top: 35px;
+  }
+  
+  .cats-on-card {
+    padding: 0 0.5rem;
+  }
+  
+  .cat-image {
+    width: 50px;
+  }
+  
+  .main-card {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+  }
+  
+  .content-wrapper {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .controls-section {
+    width: 100%;
+    gap: 0.5rem;
   }
   
   .camera-container {
+    border-width: 3px;
+  }
+  
+  .countdown-number {
+    font-size: 3rem;
+  }
+  
+  .photo-count {
+    font-size: 0.8rem;
+  }
+  
+  .capture-button-container {
+    margin-top: 0.5rem;
+  }
+  
+  .take-photos-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .control-card {
+    padding: 0.5rem;
+  }
+  
+  .control-header {
+    margin-bottom: 0.375rem;
+  }
+  
+  .control-title {
+    font-size: 0.7rem;
+  }
+  
+  .color-options {
+    gap: 0.375rem;
+  }
+  
+  .color-option {
+    padding: 0.375rem;
+    gap: 0.375rem;
+  }
+  
+  .color-option span {
+    font-size: 0.7rem;
+  }
+  
+  .color-swatch {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  .filter-options {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.25rem;
+  }
+  
+  .filter-btn {
+    padding: 0.3rem 0.4rem;
+    font-size: 0.65rem;
+  }
+  
+  .toggle-option {
+    padding: 0.375rem;
+  }
+  
+  .toggle-label span {
+    font-size: 0.65rem;
+  }
+  
+  .toggle-switch {
+    width: 32px;
+    height: 18px;
+  }
+  
+  .toggle-slider:before {
+    height: 12px;
+    width: 12px;
+  }
+  
+  .toggle-switch input:checked + .toggle-slider:before {
+    transform: translateX(14px);
+  }
+  
+  /* Polaroids on mobile - smaller but still visible */
+  .right-section {
+    display: flex;
     width: 100%;
-    aspect-ratio: 4 / 3;
   }
   
-  /* Extra small devices (phones, less than 480px) */
-  @media (max-width: 480px) {
-    .app-container {
-      padding: 0.5rem;
-      padding-bottom: 140px;
-    }
-    
-    .header {
-      gap: 0.5rem;
-      margin-bottom: 0.25rem;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .title {
-      font-size: 1 rem;
-    }
-    
-    .subtitle {
-      font-size: 0.8rem;
-      margin-bottom: 0.75rem;
-    }
-    
-    .card-with-cats {
-      padding-top: 45px;
-    }
-    
-    .cats-on-card {
-      padding: 0 0.5rem;
-    }
-    
-    .cat-image {
-      width: 60px;
-    }
-    
-    .main-card {
-      padding: 0.75rem;
-      border-radius: 0.75rem;
-    }
-    
-    .camera-container {
-      min-height: auto;
-      aspect-ratio: 4 / 3;
-      border-width: 3px;
-    }
-    
-    .countdown-number {
-      font-size: 3.5rem;
-    }
-    
-    .photo-count {
-      font-size: 0.9rem;
-    }
-    
-    .capture-button-container {
-      margin-top: 0.75rem;
-    }
-    
-    .take-photos-btn {
-      padding: 0.625rem 1.25rem;
-      font-size: 0.9rem;
-    }
-    
-    .content-wrapper {
-      gap: 0.75rem;
-    }
-    
-    .controls-section {
-      gap: 0.75rem;
-    }
-    
-    .control-card {
-      padding: 0.625rem;
-    }
-    
-    .control-header {
-      margin-bottom: 0.5rem;
-    }
-    
-    .control-title {
-      font-size: 0.8rem;
-    }
-    
-    .color-options {
-      gap: 0.5rem;
-    }
-    
-    .color-option {
-      padding: 0.5rem;
-      gap: 0.5rem;
-    }
-    
-    .color-option span {
-      font-size: 0.8rem;
-    }
-    
-    .color-swatch {
-      width: 1.25rem;
-      height: 1.25rem;
-    }
-    
-    .filter-options {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.375rem;
-    }
-    
-    .filter-btn {
-      padding: 0.375rem 0.5rem;
-      font-size: 0.75rem;
-    }
-    
-    .toggle-option {
-      padding: 0.5rem;
-    }
-    
-    .toggle-label span {
-      font-size: 0.75rem;
-    }
-    
-    .toggle-switch {
-      width: 38px;
-      height: 20px;
-    }
-    
-    .toggle-slider:before {
-      height: 14px;
-      width: 14px;
-    }
-    
-    .toggle-switch input:checked + .toggle-slider:before {
-      transform: translateX(18px);
-    }
-    
-    /* Strip view mobile */
-    .strip-view {
-      width: 100%;
-      padding: 0 0.5rem;
-    }
-    
-    .strip-card {
-      padding: 0.75rem;
-      width: 100%;
-      max-width: 280px;
-      margin: 0 auto;
-    }
-    
-    .strip-container {
-      padding: 0.75rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .strip-title {
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .photos-container {
-      gap: 0.375rem;
-      width: 100%;
-      align-items: center;
-    }
-    
-    .photo-with-character {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-    }
-    
-    .photo-wrapper {
-      display: flex;
-      justify-content: center;
-    }
-    
-    .photo-wrapper img {
-      width: 100%;
-      max-width: 10rem;
-    }
-    
-    .character-overlay {
-      width: 45px;
-      bottom: -10px;
-    }
-    
-    .character-overlay.position-left {
-      left: -12px;
-    }
-    
-    .character-overlay.position-right {
-      right: -12px;
-    }
-    
-    .strip-date {
-      font-size: 0.65rem;
-      margin-top: 0.5rem;
-    }
-    
-    .action-buttons {
-      flex-direction: column;
-      width: 100%;
-      gap: 0.5rem;
-    }
-    
-    .retake-btn,
-    .download-btn {
-      width: 100%;
-      justify-content: center;
-      padding: 0.625rem 1rem;
-      font-size: 0.8rem;
-    }
-    
-    /* Mailbox mobile */
-    .mailbox-container {
-      bottom: 8px;
-      right: 8px;
-    }
-    
-    .speech-bubble {
-      padding: 5px 10px;
-      font-size: 0.7rem;
-      margin-bottom: 5px;
-    }
-    
-    .mailbox-image {
-      width: 70px;
-    }
-    
-    /* Message card mobile */
-    .message-overlay {
-      padding: 0.5rem;
-    }
-    
-    .message-card {
-      padding: 1rem;
-      border-radius: 12px;
-      max-width: 95%;
-    }
-    
-    .message-header h2 {
-      font-size: 1.1rem;
-    }
-    
-    .message-body {
-      max-height: 35vh;
-    }
-    
-    .message-body p {
-      font-size: 0.8rem;
-      line-height: 1.5;
-    }
-    
-    .letter-image {
-      width: 180px;
-    }
-    
-    .message-close-btn {
-      padding: 0.625rem;
-      font-size: 0.875rem;
-    }
+  .polaroids-display {
+    max-width: 280px;
+    gap: 0.5rem;
+    padding: 0.5rem;
   }
   
-  /* Very small phones (less than 360px) */
-  @media (max-width: 360px) {
-    .title {
-      font-size: 1.1rem;
-    }
-    
-    .subtitle {
-      font-size: 0.75rem;
-    }
-    
-    .cat-image {
-      width: 50px;
-    }
-    
-    .card-with-cats {
-      padding-top: 38px;
-    }
-    
-    .main-card {
-      padding: 0.5rem;
-    }
-    
-    .photo-wrapper img {
-      width: 100%;
-      max-width: 8rem;
-    }
-    
-    .character-overlay {
-      width: 35px;
-      bottom: -8px;
-    }
-    
-    .character-overlay.position-left {
-      left: -8px;
-    }
-    
-    .character-overlay.position-right {
-      right: -8px;
-    }
-    
-    .mailbox-image {
-      width: 55px;
-    }
-    
-    .speech-bubble {
-      font-size: 0.6rem;
-      padding: 4px 8px;
-    }
+  .polaroid {
+    padding: 5px 5px 20px 5px;
   }
   
-  /* Small tablets (481px - 768px) */
-  @media (min-width: 481px) and (max-width: 768px) {
-    .app-container {
-      padding: 1rem;
-      padding-bottom: 160px;
-    }
-    
-    .camera-container {
-      min-height: auto;
-      aspect-ratio: 16 / 10;
-    }
-    
-    .photo-wrapper img {
-      width: 100%;
-      max-width: 13rem;
-    }
-    
-    .action-buttons {
-      flex-direction: row;
-    }
-    
-    .mailbox-container {
-      bottom: 12px;
-      right: 12px;
-    }
-    
-    .mailbox-image {
-      width: 90px;
-    }
-    
-    .message-card {
-      max-width: 400px;
-    }
+  .polaroid-tape {
+    width: 40px;
+    height: 14px;
+    top: -7px;
   }
   
-  /* Tablets (769px - 1024px) */
-  @media (min-width: 769px) and (max-width: 1024px) {
-    .app-container {
-      padding: 1.5rem;
-    }
-    
-    .content-wrapper {
-      flex-direction: column;
-    }
-    
-    .controls-section {
-      flex-direction: row;
-      flex-wrap: wrap;
-      width: 100%;
-    }
-    
-    .control-card {
-      flex: 1;
-      min-width: 180px;
-    }
-    
-    .camera-container {
-      min-height: auto;
-      aspect-ratio: 16 / 9;
-    }
-    
-    .mailbox-image {
-      width: 120px;
-    }
-    
-    .message-card {
-      max-width: 450px;
-    }
+  .polaroid-caption {
+    font-size: 0.6rem;
+    margin-top: 4px;
   }
   
-  /* Large screens (1025px+) */
-  @media (min-width: 1025px) {
-    .app-container {
-      padding: 2rem;
-    }
-    
-    .camera-container {
-      min-height: 400px;
-      aspect-ratio: 16 / 9;
-    }
-    
-    .photo-wrapper img {
-      width: 100%;
-      max-width: 16rem;
-    }
-    
-    .mailbox-image {
-      width: 140px;
-    }
-    
-    .mailbox-container {
-      bottom: 25px;
-      right: 25px;
-    }
+  .polaroid-placeholder span {
+    font-size: 1.5rem;
   }
   
-  /* Extra large screens (1400px+) */
-  @media (min-width: 1400px) {
-    .camera-view-wrapper {
-      max-width: 72rem;
-    }
-    
-    .camera-container {
-      min-height: 480px;
-    }
-    
-    .photo-wrapper img {
-      width: 100%;
-      max-width: 18rem;
-    }
-    
-    .mailbox-container {
-      bottom: 35px;
-      right: 35px;
-    }
-    
-    .mailbox-image {
-      width: 160px;
-    }
+  /* Strip view mobile */
+  .strip-view {
+    width: 100%;
+    padding: 0 0.5rem;
+    min-height: auto;
   }
   
-  /* Landscape mode on mobile */
-  @media (max-height: 500px) and (orientation: landscape) {
-    .app-container {
-      padding: 0.5rem;
-      min-height: auto;
-    }
-    
-    .header {
-      margin-bottom: 0.25rem;
-    }
-    
-    .title {
-      font-size: 1.25rem;
-    }
-    
-    .subtitle {
-      margin-bottom: 0.25rem;
-      font-size: 0.75rem;
-    }
-    
-    .card-with-cats {
-      padding-top: 35px;
-    }
-    
-    .cat-image {
-      width: 50px;
-    }
-    
-    .main-card {
-      padding: 0.5rem;
-    }
-    
-    .camera-container {
-      min-height: 150px;
-      aspect-ratio: 16 / 9;
-    }
-    
-    .countdown-number {
-      font-size: 2.5rem;
-    }
-    
-    .capture-button-container {
-      margin-top: 0.375rem;
-    }
-    
-    .take-photos-btn {
-      padding: 0.375rem 0.75rem;
-      font-size: 0.75rem;
-    }
-    
-    .content-wrapper {
-      flex-direction: row;
-      gap: 0.5rem;
-    }
-    
-    .controls-section {
-      width: 12rem;
-      gap: 0.375rem;
-    }
-    
-    .control-card {
-      padding: 0.375rem;
-    }
-    
-    .control-header {
-      margin-bottom: 0.25rem;
-    }
-    
-    .control-title {
-      font-size: 0.7rem;
-    }
-    
-    .color-options {
-      gap: 0.25rem;
-    }
-    
-    .color-option {
-      padding: 0.25rem;
-    }
-    
-    .color-option span {
-      font-size: 0.7rem;
-    }
-    
-    .filter-btn {
-      padding: 0.25rem;
-      font-size: 0.65rem;
-    }
-    
-    .toggle-option {
-      padding: 0.25rem;
-    }
-    
-    .toggle-label span {
-      font-size: 0.65rem;
-    }
-    
-    .mailbox-container {
-      bottom: 5px;
-      right: 5px;
-    }
-    
-    .mailbox-image {
-      width: 55px;
-    }
-    
-    .speech-bubble {
-      font-size: 0.55rem;
-      padding: 3px 6px;
-      margin-bottom: 3px;
-    }
+  .strip-card {
+    padding: 0.75rem;
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto;
   }
   
-  /* Print styles - hide interactive elements */
-  @media print {
-    .mailbox-container,
-    .letter-overlay,
-    .message-overlay,
-    .take-photos-btn,
-    .action-buttons {
-      display: none !important;
-    }
+  .strip-container {
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
-  /* High contrast mode support */
-  @media (prefers-contrast: high) {
-    .main-card {
-      border: 2px solid #333;
-    }
-    
-    .control-card {
-      border: 2px solid #333;
-    }
-    
-    .filter-btn {
-      border: 2px solid #333;
-    }
+  .strip-title {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
   }
   
-  /* Reduced motion support */
-  @media (prefers-reduced-motion: reduce) {
-    .speech-bubble {
-      animation: none;
-    }
-    
-    .countdown-number {
-      animation: none;
-    }
-    
-    .mailbox-container:hover {
-      transform: none;
-    }
-    
-    .take-photos-btn:hover,
-    .download-btn:hover {
-      transform: none;
-    }
+  .photos-container {
+    gap: 0.25rem;
+    width: 100%;
+    align-items: center;
   }
   
+  .photo-with-character {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .photo-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .photo-wrapper img {
+    width: 100%;
+    max-width: 9rem;
+  }
+  
+  .character-overlay {
+    width: 40px;
+    bottom: -8px;
+  }
+  
+  .character-overlay.position-left {
+    left: -10px;
+  }
+  
+  .character-overlay.position-right {
+    right: -10px;
+  }
+  
+  .strip-date {
+    font-size: 0.6rem;
+    margin-top: 0.5rem;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.375rem;
+  }
+  
+  .retake-btn,
+  .download-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+  }
+  
+  /* Mailbox mobile */
+  .mailbox-container {
+    bottom: 6px;
+    right: 6px;
+  }
+  
+  .speech-bubble {
+    padding: 4px 8px;
+    font-size: 0.6rem;
+    margin-bottom: 4px;
+  }
+  
+  .mailbox-image {
+    width: 60px;
+  }
+  
+  /* Message card mobile */
+  .message-overlay {
+    padding: 0.5rem;
+  }
+  
+  .message-card {
+    padding: 1rem;
+    border-radius: 12px;
+    max-width: 95%;
+  }
+  
+  .message-header h2 {
+    font-size: 1rem;
+  }
+  
+  .message-body {
+    max-height: 35vh;
+  }
+  
+  .message-body p {
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+  
+  .letter-image {
+    width: 160px;
+  }
+  
+  .message-close-btn {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Very small phones (less than 360px) */
+@media (max-width: 360px) {
+  .title {
+    font-size: 0.9rem;
+  }
+  
+  .subtitle {
+    font-size: 0.7rem;
+  }
+  
+  .cat-image {
+    width: 40px;
+  }
+  
+  .card-with-cats {
+    padding-top: 30px;
+  }
+  
+  .main-card {
+    padding: 0.375rem;
+  }
+  
+  .photo-wrapper img {
+    width: 100%;
+    max-width: 7rem;
+  }
+  
+  .character-overlay {
+    width: 30px;
+    bottom: -6px;
+  }
+  
+  .character-overlay.position-left {
+    left: -6px;
+  }
+  
+  .character-overlay.position-right {
+    right: -6px;
+  }
+  
+  .mailbox-image {
+    width: 50px;
+  }
+  
+  .speech-bubble {
+    font-size: 0.55rem;
+    padding: 3px 6px;
+  }
+}
+
+/* Large screens (1025px+) */
+@media (min-width: 1025px) {
+  .right-section {
+    display: flex;
+  }
+  
+  .mailbox-image {
+    width: 110px;
+  }
+  
+  .mailbox-container {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+/* Extra large screens (1400px+) */
+@media (min-width: 1400px) {
+  .left-section {
+    max-width: 750px;
+  }
+  
+  .polaroids-display {
+    max-width: 550px;
+    gap: 2rem;
+  }
+  
+  .polaroid {
+    padding: 15px 15px 50px 15px;
+  }
+  
+  .polaroid-caption {
+    font-size: 1rem;
+  }
+}
+
+/* Landscape mode on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .app-container {
+    padding: 0.25rem;
+    min-height: auto;
+  }
+  
+  .header-section {
+    margin-bottom: 0.25rem;
+  }
+  
+  .title {
+    font-size: 1rem;
+  }
+  
+  .subtitle {
+    font-size: 0.65rem;
+  }
+  
+  .card-with-cats {
+    padding-top: 25px;
+  }
+  
+  .cat-image {
+    width: 40px;
+  }
+  
+  .main-card {
+    padding: 0.375rem;
+  }
+  
+  .camera-container {
+    aspect-ratio: 16 / 9;
+  }
+  
+  .countdown-number {
+    font-size: 2rem;
+  }
+  
+  .capture-button-container {
+    margin-top: 0.25rem;
+  }
+  
+  .take-photos-btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.65rem;
+  }
+  
+  .content-wrapper {
+    flex-direction: row;
+    gap: 0.375rem;
+  }
+  
+  .controls-section {
+    width: 10rem;
+    gap: 0.25rem;
+  }
+  
+  .control-card {
+    padding: 0.25rem;
+  }
+  
+  .control-header {
+    margin-bottom: 0.125rem;
+  }
+  
+  .control-title {
+    font-size: 0.6rem;
+  }
+  
+  .color-options {
+    gap: 0.125rem;
+  }
+  
+  .color-option {
+    padding: 0.125rem;
+  }
+  
+  .color-option span {
+    font-size: 0.6rem;
+  }
+  
+  .filter-btn {
+    padding: 0.125rem;
+    font-size: 0.55rem;
+  }
+  
+  .toggle-option {
+    padding: 0.125rem;
+  }
+  
+  .toggle-label span {
+    font-size: 0.55rem;
+  }
+  
+  .mailbox-container {
+    bottom: 3px;
+    right: 3px;
+  }
+  
+  .mailbox-image {
+    width: 45px;
+  }
+  
+  .speech-bubble {
+    font-size: 0.5rem;
+    padding: 2px 4px;
+    margin-bottom: 2px;
+  }
+}
+
+/* Print styles - hide interactive elements */
+@media print {
+  .mailbox-container,
+  .letter-overlay,
+  .message-overlay,
+  .take-photos-btn,
+  .action-buttons,
+  .right-section {
+    display: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .main-card {
+    border: 2px solid #333;
+  }
+  
+  .control-card {
+    border: 2px solid #333;
+  }
+  
+  .filter-btn {
+    border: 2px solid #333;
+  }
+  
+  .polaroid {
+    border: 2px solid #333;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .speech-bubble {
+    animation: none;
+  }
+  
+  .countdown-number {
+    animation: none;
+  }
+  
+  .mailbox-container:hover {
+    transform: none;
+  }
+  
+  .take-photos-btn:hover,
+  .download-btn:hover,
+  .polaroid:hover {
+    transform: none;
+  }
+}
