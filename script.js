@@ -3,6 +3,7 @@ let appState = 'camera'; // 'camera', 'countdown', 'strip'
 let stripColor = 'lavender';
 let filter = 'normal';
 let includeCharacters = true;
+let phoneMode = false;
 let photos = [];
 let countdown = 3;
 let currentPhotoIndex = 0;
@@ -31,6 +32,7 @@ const downloadBtn = document.getElementById('downloadBtn');
 const colorOptions = document.querySelectorAll('.color-option');
 const filterBtns = document.querySelectorAll('.filter-btn');
 const includeCharactersCheckbox = document.getElementById('includeCharacters');
+const phoneModeCheckbox = document.getElementById('phoneMode');
 
 // Filter CSS values
 const filterStyles = {
@@ -232,13 +234,14 @@ async function generateStrip() {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
   
-  const photoWidth = 300;
-  const photoHeight = 225;
-  const padding = 30;
-  const gap = 20;
-  const headerHeight = 50;
-  const footerHeight = 30;
-  const characterSize = 80;
+  // Phone mode uses square photos (1:1), desktop uses 4:3
+  const photoWidth = phoneMode ? 280 : 300;
+  const photoHeight = phoneMode ? 280 : 225;
+  const padding = phoneMode ? 25 : 30;
+  const gap = phoneMode ? 15 : 20;
+  const headerHeight = phoneMode ? 45 : 50;
+  const footerHeight = phoneMode ? 25 : 30;
+  const characterSize = phoneMode ? 70 : 80;
   
   canvas.width = photoWidth + padding * 2;
   canvas.height = headerHeight + (photoHeight + gap) * 4 - gap + padding * 2 + footerHeight;
@@ -246,12 +249,6 @@ async function generateStrip() {
   // Background color
   ctx.fillStyle = stripBgColors[stripColor];
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  
-  // Title
-  ctx.fillStyle = stripColor === 'black' ? '#ffffff' : '#333333';
-  ctx.font = "bold 20px 'DM Sans', sans-serif";
-  ctx.textAlign = 'center';
-  ctx.fillText('4th Anniversary!', canvas.width / 2, headerHeight - 10);
   
   // Load character images only if needed
   let characterImages = [];
@@ -387,6 +384,10 @@ filterBtns.forEach(btn => {
 
 includeCharactersCheckbox.addEventListener('change', () => {
   includeCharacters = includeCharactersCheckbox.checked;
+});
+
+phoneModeCheckbox.addEventListener('change', () => {
+  phoneMode = phoneModeCheckbox.checked;
 });
 
 // Mailbox interaction
